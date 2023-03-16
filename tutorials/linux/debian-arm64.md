@@ -11,8 +11,6 @@ This tutorial will show you how to monitor a Debian-arm64 host, deploy the Grafa
 
 1. Click the **Integrations and Connections** icon (it looks like a lightning bolt) in the left column.
 
-    <!--![Grafana Home page](/static/img/docs/grafana-cloud/quickstarts-grafanahome.png)-->
-
 2. Download the Grafana Agent Binary on the Debian Host
 
 ```bash
