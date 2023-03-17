@@ -31,4 +31,4 @@ The following table compares Grafana Agent and Grafana Agent Operator.
 | Helm Chart               |   &#x2713;    |        &#x2713;        |
 | Works outside Kubernetes |   &#x2713;    |        &#x2718;        |
 
-For details, see the [Grafana Agent](/docs/agent/latest) and [Grafana Agent Operator](/docs/agent/latest/operator/) documentation.
+For details, see the [Grafana Agent](https://grafana.com/docs/agent/latest/) and [Grafana Agent Operator](https://grafana.com/docs/agent/latest/operator/) documentation.

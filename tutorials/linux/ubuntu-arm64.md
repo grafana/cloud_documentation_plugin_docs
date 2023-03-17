@@ -20,9 +20,9 @@ curl -O -L "https://github.com/grafana/agent/releases/latest/download/grafana-ag
 3. Install Unzip
 
 ```bash
-if [ $(dpkg-query -W -f='${Status}' nano 2>/dev/null | grep -c "ok installed") -eq 0 ];
+if [ $(dpkg-query -W -f='${Status}' unzip 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
-  apt-get install nano;
+  apt-get install unzip;
 fi
 ```
 
@@ -33,7 +33,75 @@ unzip "grafana-agent-linux-arm64.zip";
 chmod a+x "grafana-agent-linux-amd64";
 ```
 
-5. Start the Agent
+5. Setup Agent Binary
+```bash
+cat <<EOF > ./agent-config.yaml
+integrations:
+  node_exporter:
+    enabled: true
+    relabel_configs:
+      - replacement: hostname
+        target_label: instance
+  prometheus_remote_write:
+    - basic_auth:
+        password: eyJrIjoiYzlkNDZlZDlmNDM2OTUyOGI0Y2E1MTI0ZGU5OTYwYjg5YzUxMGJjNSIsIm4iOiJzdGFjay01Njg0ODUtZWFzeXN0YXJ0LXByb20tcHVibGlzaGVyIiwiaWQiOjY1M
+        username: 837825
+      url: https://prometheus-us-central1.grafana.net/api/prom/push
+logs:
+  configs:
+    - clients:
+        - basic_auth:
+            password: eyJrIjoiYzlkNDZlZDlmNDM2OTUyOGI0Y2E1MTI0ZGU5OTYwYjg5YzUxMGJjNSIsIm4iOiJzdGFjay01Njg0ODUtZWFzeXN0YXJ0LXByb20tcHVibGlzaGVyIiwiaWQiOjY
+            username: 417881
+          url: https://logs-prod-017.grafana.net/loki/api/v1/push
+      name: integrations
+      positions:
+        filename: /tmp/positions.yaml
+      scrape_configs:
+        - job_name: integrations/node_exporter_journal_scrape
+          journal:
+            labels:
+              instance: hostname
+              job: integrations/node_exporter
+            max_age: 24h
+          relabel_configs:
+            - source_labels:
+                - __journal__systemd_unit
+              target_label: unit
+            - source_labels:
+                - __journal__boot_id
+              target_label: boot_id
+            - source_labels:
+                - __journal__transport
+              target_label: transport
+            - source_labels:
+                - __journal_priority_keyword
+              target_label: level
+        - job_name: integrations/node_exporter_direct_scrape
+          static_configs:
+            - labels:
+                __path__: /var/log/{syslog,messages,*.log}
+                instance: hostname
+                job: integrations/node_exporter
+              targets:
+                - localhost
+      target_config:
+        sync_period: 10s
+metrics:
+  configs:
+    - name: integrations
+      remote_write:
+        - basic_auth:
+            password: eyJrIjoiYzlkNDZlZDlmNDM2OTUyOGI0Y2E1MTI0ZGU5OTYwYjg5YzUxMGJjNSIsIm4iOiJzdGFjay01Njg0ODUtZWFzeXN0YXJ0LXByb20tcHVibGlzaGVyIiwiaWQiOjY1M
+            username: 837825
+          url: https://prometheus-us-central1.grafana.net/api/prom/push
+  global:
+    scrape_interval: 60s
+  wal_directory: /tmp/grafana-agent-wal
+EOF
+```
+
+6. Start the Agent
 
 ```bash
 ./grafana-agent-linux-amd64 --config.file=agent-config.yaml

@@ -8,7 +8,6 @@ This guide shows how to use the `grafana_agent` Ansible role to deploy and manag
 
 Before you begin, you should have:
 
-- A Grafana Cloud account
 - Linux hosts
 - SSH access to the Linux hosts
 - Account permissions sufficient to install and use Grafana Agent on the Linux hosts
@@ -145,7 +144,7 @@ To use the Grafana Agent Ansible role:
    When deploying the Agent across multiple instances for monitoring them, It is essential that the Agent is able to auto-detect the hostname for ease in monitoring.
    Notice that the label `instance` has been set to the value `${HOSTNAME:-default}`, which is substituted by the value of the HOSTNAME environment variable in the Linux host.
    
-   To read more about the variable substitution, refer to the Grafana Agent [node_exporter_config](/docs/agent/latest/configuration/integrations/node-exporter-config/) documentation.
+   To read more about the variable substitution, refer to the Grafana Agent [node_exporter_config](https://grafana.com/docs/agent/latest/configuration/integrations/node-exporter-config/) documentation.
 
 1. To run the playbook, run this command:
 
@@ -179,7 +178,7 @@ To check logs:
 
 To check metrics:
 
-1. Use the dropdown menu at the top of the page to select your [Prometheus](/oss/prometheus/) data source.
+1. Use the dropdown menu at the top of the page to select your Prometheus data source.
 
 1. Run the query `{instance="centos-01"}` where centos-01 is the hostname of one of the Linux hosts.
 
@@ -197,11 +196,3 @@ Here's an example of one of the prebuilt dashboards included with the Linux inte
 ![Dashboard](https://grafana.com/static/assets/img/blog/ansible-to-manage-agent3.png)
 
 Using the **Instance** dropdown in the dashboard, you can select from the hostnames where you deployed Grafana Agent and start monitoring them.
-
-## Summary
-
-The `grafana_agent` Ansible role makes it easy to deploy Grafana Agents across various machines at the same time and ultimately makes it easier to manage these deployments.
-This example showed agent deployments across 8 linux hosts, but it's possible to monitor more hosts using the Agent Role.
-To add monitor more linux hosts, update the `inventory` file and re-run the Ansible playbook (which can also be automated).
-
-To learn more about the Grafana Ansible collection, see its [GitHub repository](https://github.com/grafana/grafana-ansible-collection) or its [documentation](https://docs.ansible.com/ansible/latest/collections/grafana/grafana/index.html).
