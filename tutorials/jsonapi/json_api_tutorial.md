@@ -7,7 +7,7 @@ Under "Search itegrations" type in "JSON API" <br />
 ![Json API Data source](./images/json_api_ds.png) <br /> 
 Select JSON API and it will navigate you to the plugin home page. Select "Installation" <br />   
 ![Json API Data source](./images/installation.png) <br />   
-On the installation screen, you will see your user on the account and you will be able to install the plugin (might need to word this better) <br />      
+On the installation screen, you will see your user on the account and you will be able to install the plugin<br />      
 
 ![Json API Data source](./images/install_json.png) <br />  
 Once installed, you will see "manage instance" and "remove plugin" <br />   
