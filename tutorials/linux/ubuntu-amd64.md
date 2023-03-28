@@ -46,14 +46,14 @@ integrations:
     - basic_auth:
         password: <your-api-key>
         username: <your-user-id>
-      url: https://prometheus-us-central1.grafana.net/api/prom/push
+      url: https://prometheus-[your-instance-id].grafana.net/api/prom/push
 logs:
   configs:
     - clients:
         - basic_auth:
             password: <your-api-key>
             username: <your-user-id>
-          url: https://logs-prod-017.grafana.net/loki/api/v1/push
+          url: https://logs-[your-instance-id].grafana.net/loki/api/v1/push
       name: integrations
       positions:
         filename: /tmp/positions.yaml
@@ -94,7 +94,7 @@ metrics:
         - basic_auth:
             password: <your-api-key>
             username: <your-user-id>
-          url: https://prometheus-us-central1.grafana.net/api/prom/push
+          url: https://prometheus-[your-instance-id].grafana.net/api/prom/push
   global:
     scrape_interval: 60s
   wal_directory: /tmp/grafana-agent-wal
