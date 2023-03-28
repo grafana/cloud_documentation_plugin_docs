@@ -44,15 +44,15 @@ integrations:
         target_label: instance
   prometheus_remote_write:
     - basic_auth:
-        password: eyJrIjoiYzlkNDZlZDlmNDM2OTUyOGI0Y2E1MTI0ZGU5OTYwYjg5YzUxMGJjNSIsIm4iOiJzdGFjay01Njg0ODUtZWFzeXN0YXJ0LXByb20tcHVibGlzaGVyIiwiaWQiOjY1M
-        username: 837825
+        password: <your-api-key>
+        username: <your-user-id>
       url: https://prometheus-us-central1.grafana.net/api/prom/push
 logs:
   configs:
     - clients:
         - basic_auth:
-            password: eyJrIjoiYzlkNDZlZDlmNDM2OTUyOGI0Y2E1MTI0ZGU5OTYwYjg5YzUxMGJjNSIsIm4iOiJzdGFjay01Njg0ODUtZWFzeXN0YXJ0LXByb20tcHVibGlzaGVyIiwiaWQiOjY
-            username: 417881
+            password: <your-api-key>
+            username: <your-user-id>
           url: https://logs-prod-017.grafana.net/loki/api/v1/push
       name: integrations
       positions:
@@ -92,8 +92,8 @@ metrics:
     - name: integrations
       remote_write:
         - basic_auth:
-            password: eyJrIjoiYzlkNDZlZDlmNDM2OTUyOGI0Y2E1MTI0ZGU5OTYwYjg5YzUxMGJjNSIsIm4iOiJzdGFjay01Njg0ODUtZWFzeXN0YXJ0LXByb20tcHVibGlzaGVyIiwiaWQiOjY1M
-            username: 837825
+            password: <your-api-key>
+            username: <your-user-id>
           url: https://prometheus-us-central1.grafana.net/api/prom/push
   global:
     scrape_interval: 60s
