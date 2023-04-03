@@ -14,7 +14,7 @@ This tutorial will show you how to monitor a Debian-arm64 host, deploy the Grafa
 2. Download the Grafana Agent Binary on the Debian Host
 
 ```bash
-sudo ARCH="arm64" GCLOUD_STACK_ID="560581" GCLOUD_API_KEY="eyJrIjoiZjViYWYyMDgzZGY4MzE5NWNhZDI2MDFhMWQwZjNmODllM2Q1NGZlMyIsIm4iOiJzdGFjay01NjA1ODQtZWFzeXN0YXJ0LWdjb20iLCJCI6NjUyOTkyfQ==" GCLOUD_API_URL="https://integrations-api-us-central.grafana.net" /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/grafana/agent/release/production/grafanacloud-install.sh)"
+sudo ARCH="arm64" GCLOUD_STACK_ID="<your-stack-id>" GCLOUD_API_KEY="<your-api-key>" GCLOUD_API_URL="<your-url>" /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/grafana/agent/release/production/grafanacloud-install.sh)"
 ```
 
 3. Start the Agent
