@@ -2,6 +2,14 @@
 
 From the home screen, select "+ Connect Data" and it will take you to the Integrations and Connections <br />   
 ![Grafana Cloud Admin Panel](./images/home_admin.png)   
+[working link](https://www.google.com)
+[working link](https://www.yahoo.com)
+[working link](https://www.github.com)
+
+[working link](https://www.microsoft.com)
+[brokenlink](https://www.microsoft.om)
+[brokenlink](https://www.sdfasdlfjadf.com)
+
 
 Under "Search itegrations" type in "JSON API" <br />  
 ![Json API Data source](./images/json_api_ds.png) <br /> 
